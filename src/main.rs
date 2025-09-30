@@ -13,6 +13,7 @@ use firewheel::{
 };
 use std::sync::Arc;
 
+#[derive(Debug, Default)]
 struct DummyInner;
 
 #[derive(Debug, Default)]
@@ -74,7 +75,7 @@ impl AudioNode for DummyNode {
 
 impl DummyNode {
     fn set_dummy(&mut self) {
-        self.dummy = Some(ArcGc::new_unsized(|| Arc::new(DummyInner)));
+        self.dummy = Some(ArcGc::new_unsized(|| Arc::new(DummyInner::default())));
         assert!(self.dummy.is_some());
     }
 
