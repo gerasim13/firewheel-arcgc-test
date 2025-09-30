@@ -74,7 +74,8 @@ impl AudioNode for DummyNode {
 
 impl DummyNode {
     fn set_dummy(&mut self) {
-        self.dummy = Some(ArcGc::new_unsized(|| Arc::new(DummyInner)))
+        self.dummy = Some(ArcGc::new_unsized(|| Arc::new(DummyInner)));
+        assert!(self.dummy.is_some());
     }
 
     fn sync_dummy(&mut self) -> NodeEventType {
